@@ -1,0 +1,108 @@
+@import url(https://fonts.googleapis.com/css?family=Exo);
+
+body {
+	background: url('1488305.jpg');
+	background-position: fixed;
+ 	background-size:100%;
+  	background-repeat:no-repeat;
+   	height: 100%;
+   	width: 100%;
+}
+
+.content {
+/*	margin: 0 auto;*/
+	position: center;
+	text-align: center;
+	display: inline-block;
+	width: 405px;
+	height: 450px;
+}
+
+h1 {
+	font-family: 'Exo', sans-serif;
+	font-size: 60px;
+	position: left;
+	padding: 30px;
+	font-style: bold;
+}
+
+p {
+	font-family: 'Exo', sans-serif;
+	float: left;
+	font-size: 25px;
+	height: 400px;
+	width: 400px;
+	padding-bottom: 5px;
+	padding-left: 30px;
+}
+
+.button {
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  background-color: #b5b5b5;
+  padding: 20px 40px 20px 40px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn:hover {
+  background: #737373;
+  text-decoration: none;
+}
+
+.colors {
+	float: right;
+	height: 350px;
+	width: 350px;
+	padding-top: 200px;
+	padding-right: 50px;
+/*	background-color: white;
+*/
+}
+
+.red {
+	background-color: #B20000;
+	height: 150px;
+	width: 150px;
+	float: left;
+	margin: 0 auto;
+	position: center;
+	text-align: center;
+}
+
+.blue {
+	background-color: #00004C;
+	height: 150px;
+	width: 150px;
+	float: right;
+	margin: 0 auto;
+	position: center;
+	text-align: center;
+}
+
+.green {
+	background-color: #004C00;
+	height: 150px;
+	width: 150px;
+	float: left;
+	margin: 0 auto;
+	position: center;
+	text-align: center;
+}
+
+.yellow {
+	background-color: #CCCC00;
+	height: 150px;
+	width: 150px;
+	float: right;
+	margin: 0 auto;
+	position: center;
+	text-align: center;
+}
+
+
+}
+
+
