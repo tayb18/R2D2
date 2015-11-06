@@ -33,23 +33,24 @@ p {
 	height: 400px;
 	width: 400px;
 	padding-bottom: 5px;
-	padding-left: 30px;
+	padding-left: 100px;
 }
 
-.button {
-  border-radius: 28px;
-  font-family: Arial;
-  color: #ffffff;
-  font-size: 20px;
-  background-color: #b5b5b5;
-  padding: 20px 40px 20px 40px;
-  text-decoration: none;
-  display: inline-block;
+button {
+  	border-radius: 28px;
+  	font-family: Arial;
+  	color: #ffffff;
+ 	font-size: 20px;
+ 	background-color: #b5b5b5;
+ 	padding: 20px 40px 20px 40px;
+ 	text-decoration: none;
+ 	display: inline-block;
+ 	margin-left: 160px;
 }
 
-.btn:hover {
-  background: #737373;
-  text-decoration: none;
+button:hover {
+ 	background: #737373;
+  	text-decoration: none;
 }
 
 .colors {
@@ -58,51 +59,102 @@ p {
 	width: 350px;
 	padding-top: 200px;
 	padding-right: 50px;
-/*	background-color: white;
+}
+
+#white {
+	background-color: #FFFFFF;
+	height: 150px;
+	width: 150px;
+	float: left;
+	margin: 0 auto;
+	position: center;
+	text-align: center;
+
+}
+
+
+
+#blue {
+	background-color: #0000FF;
+	height: 150px;
+	width: 150px;
+	float: left;
+	margin: 0 auto;
+	position: center;
+	text-align: center;
+}
+
+#grey {
+	background-color: #545355;
+	height: 150px;
+	width: 150px;
+	float: left;
+	margin: 0 auto;
+	position: center;
+	text-align: center;
+}
+
+#black {
+	background-color: #0D0D0D;
+	height: 150px;
+	width: 150px;
+	float: left;
+	margin: 0 auto;
+	position: center;
+	text-align: center;
+}
+
+.glow {
+	box-shadow: 0px 0px 50px #fff;
+	background-color: white;
+}
+
+/*.hidden {
+	visibility: hidden;
+}
+
+.white.glow {
+	background-color: #E42F2F;
+	height: 150px;
+	width: 150px;
+	float: right;
+	margin: 0 auto;
+	position: center;
+	text-align: center;
+}
+
+.blue.glow {
+	background-color: #0000FF;
+	height: 150px;
+	width: 150px;
+	float: right;
+	margin: 0 auto;
+	position: center;
+	text-align: center;
+}
+
+.grey.glow {
+	background-color: #198C19;
+	height: 150px;
+	width: 150px;
+	float: right;
+	margin: 0 auto;
+	position: center;
+	text-align: center;
+}
+
+.black.glow {
+	background-color: #FFFF32 ;
+	height: 150px;
+	width: 150px;
+	float: right;
+	margin: 0 auto;
+	position: center;
+	text-align: center;
+}
+
+
+
+
+
 */
-}
-
-.red {
-	background-color: #B20000;
-	height: 150px;
-	width: 150px;
-	float: left;
-	margin: 0 auto;
-	position: center;
-	text-align: center;
-}
-
-.blue {
-	background-color: #00004C;
-	height: 150px;
-	width: 150px;
-	float: right;
-	margin: 0 auto;
-	position: center;
-	text-align: center;
-}
-
-.green {
-	background-color: #004C00;
-	height: 150px;
-	width: 150px;
-	float: left;
-	margin: 0 auto;
-	position: center;
-	text-align: center;
-}
-
-.yellow {
-	background-color: #CCCC00;
-	height: 150px;
-	width: 150px;
-	float: right;
-	margin: 0 auto;
-	position: center;
-	text-align: center;
-}
-
-
-}
-
-
