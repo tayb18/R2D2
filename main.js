@@ -43,16 +43,7 @@ var pattern = [];
 	};
 
 	// var removeGlow
-	// var glow = function(x){
 
-	// // if eventtarget.class === white 
-	// white.classList.add('glow');
-	// blue.classList.add('glow');
-	// grey.classList.add('glow');
-	// black.classList.add('glow');
-	// };
-
-// };
 
 var createPattern = function (event){
 	var target = event.target;
