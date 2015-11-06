@@ -3,10 +3,10 @@
 body {
 	background: url('1488305.jpg');
 	background-position: fixed;
- 	background-size:100%;
-  	background-repeat:no-repeat;
-   	height: 100%;
-   	width: 100%;
+ 	background-size: cover;
+  	background-repeat: no-repeat;
+/*   	height: 100%;
+   	width: 100%;*/
 }
 
 .content {
@@ -69,10 +69,7 @@ button:hover {
 	margin: 0 auto;
 	position: center;
 	text-align: center;
-
 }
-
-
 
 #blue {
 	background-color: #0000FF;
@@ -92,6 +89,7 @@ button:hover {
 	margin: 0 auto;
 	position: center;
 	text-align: center;
+
 }
 
 #black {
@@ -102,59 +100,15 @@ button:hover {
 	margin: 0 auto;
 	position: center;
 	text-align: center;
+
 }
 
 .glow {
 	box-shadow: 0px 0px 50px #fff;
-	background-color: white;
-}
-
-/*.hidden {
-	visibility: hidden;
-}
-
-.white.glow {
-	background-color: #E42F2F;
-	height: 150px;
-	width: 150px;
-	float: right;
-	margin: 0 auto;
-	position: center;
-	text-align: center;
-}
-
-.blue.glow {
-	background-color: #0000FF;
-	height: 150px;
-	width: 150px;
-	float: right;
-	margin: 0 auto;
-	position: center;
-	text-align: center;
-}
-
-.grey.glow {
-	background-color: #198C19;
-	height: 150px;
-	width: 150px;
-	float: right;
-	margin: 0 auto;
-	position: center;
-	text-align: center;
-}
-
-.black.glow {
-	background-color: #FFFF32 ;
-	height: 150px;
-	width: 150px;
-	float: right;
-	margin: 0 auto;
-	position: center;
-	text-align: center;
+	background-color: gray;
+	opacity: .6;
 }
 
 
 
 
-
-*/
