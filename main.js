@@ -28,6 +28,7 @@ var pattern = [];
 var glowTimerOn = window.setTimeout(addGlow, 1000);
 var glowTimerOff = window.setTimeout(removeGlow, 2000);
 
+var userResponse = [];
 
 
 
@@ -42,8 +43,6 @@ var removeGlow = function (square){
 	console.log(square);
 	square.classList.remove('glow');
 };
-
-//???????? does square above refer to the var square definedbelow? Even though it's defined locally within clickFunction?
 
 //clickFlashColor applies the addGlow and removeGlow functions to the square clicked on by the user
 var clickFlashColor = function (event){
@@ -87,7 +86,7 @@ var startGame = function(event){
 	//It should first run the createPattern function, adding one random color to the pattern array
 	createPattern();
 
-	//????????? WHAT DOES THIS DO AGAIN????
+	//this will cycle through the patterns array and flash each item in order for half a second
 	window.setTimeout(function() {
 		var i = 0;
 		var square;
@@ -98,14 +97,13 @@ var startGame = function(event){
 		};
 	}, 500);
 
-	//??????????? Empty array to push user click events into. Should I create a new array each round and clear it at the end of the round instead??
-	var userResponse = [];
+	
 
-	//this should track the user response by pushing the color they clicked into an empty array userResponse (or should I create a new array to push into each round?)
+	//this should track the user response by pushing the color they clicked into a new array each round
 
 	//????????Is that a decent parameter name??
-	var getUserResponse = function (userResponse){
-		//(track user clicks here and push them into userResponse array OR push into a new array)
+	var getUserResponse = function (){
+		//(track user clicks here and push into a new array)
 
 		if (userResponse === pattern[i]){
 			createPattern();
