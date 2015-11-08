@@ -36,6 +36,10 @@ p {
 	padding-left: 100px;
 }
 
+.hidden {
+	visibility: hidden;
+}
+
 button {
   	border-radius: 28px;
   	font-family: Arial;
@@ -69,6 +73,11 @@ button:hover {
 	margin: 0 auto;
 	position: center;
 	text-align: center;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	border-radius: 5px;
+	border-style: solid;
+	border-color: #2B3856;
 }
 
 #blue {
@@ -79,6 +88,11 @@ button:hover {
 	margin: 0 auto;
 	position: center;
 	text-align: center;
+	margin-left: 5px;
+	margin-bottom: 5px;
+	border-radius: 5px;
+	border-style: solid;
+	border-color: #2B3856;
 }
 
 #grey {
@@ -89,6 +103,11 @@ button:hover {
 	margin: 0 auto;
 	position: center;
 	text-align: center;
+	margin-right: 5px;
+	margin-top: 5px;
+	border-radius: 5px;
+	border-style: solid;
+	border-color: #2B3856;
 
 }
 
@@ -100,6 +119,11 @@ button:hover {
 	margin: 0 auto;
 	position: center;
 	text-align: center;
+	margin-left: 5px;
+	margin-top: 5px;
+	border-radius: 5px;
+	border-style: solid;
+	border-color: #2B3856;
 
 }
 
