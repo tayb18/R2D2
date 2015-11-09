@@ -14,12 +14,11 @@ var userResponse = [];
 var round = 0;
 var roundNumber = document.querySelector('#roundNumber');
 
-//these variables refer to the four different r2 sound bites 
-var soundOne = new Audio('R2D2-beep1.wav');
-var soundTwo = new Audio('');
-var soundThree = new Audio('');
-var soundFour = new Audio('');
-// sound.play();
+var soundOne = new Audio('./R2D2-beeps/R2D2-beep1.mp3');
+var soundTwo = new Audio('./R2D2-beeps/R2D2-beep2.wav');
+var soundThree = new Audio('./R2D2-beeps/R2D2-beep3.mp3');
+var soundFour = new Audio('./R2D2-beeps/R2D2-beep4.mp3');
+
 
 var addGlow = function (square){
 	square.classList.add('glow');
@@ -32,29 +31,32 @@ var removeGlow = function (square){
 var clickFlashColor = function (event){
 	if (event.target === white) {
 		userResponse.push(white);
+		soundOne.play();
 		console.log(userResponse);
 	} else if (event.target === blue) {
 		userResponse.push(blue);
+		soundTwo.play();
 		console.log(userResponse);
 	} else if (event.target === grey){
 		userResponse.push(grey);
+		soundThree.play();
 		console.log(userResponse);
 	} else if (event.target === black){
 		userResponse.push(black);
+		soundFour.play();
 		console.log(userResponse);
 	}
 	console.log(userResponse);
 
 	var square = event.target;
-	soundOne.play();
 	addGlow(square);
 	window.setTimeout(removeGlow, 750, square);
+
 	compareArrays();
 };
 
 var rTwoFlashColor = function (square) {
 	addGlow(square);
-	soundOne.play();
 	window.setTimeout(removeGlow, 750, square);
 };
 
@@ -69,9 +71,11 @@ var createPattern = function (event){
 		pattern.push(black);
 	}
 	console.log(pattern);
+
 };
 
 var animatePatternArray = function (){
+
 	for (var i = 0, len = pattern.length; i < len; i++){
 
 		var setAnimationDelay = function (rememberIndex) {
@@ -81,11 +85,9 @@ var animatePatternArray = function (){
 				rTwoFlashColor(square);
 			}, rememberIndex * 1000);
 		};
-
 		setAnimationDelay(i);
 	}
 };
-
 
 var compareArrays = function (){
 	if (pattern.length !== userResponse.length) {
@@ -93,9 +95,7 @@ var compareArrays = function (){
 	}
 	var matched = true;
 	for (var i = 0; i < pattern.length; i++) {
-		// checking
 		if(userResponse[i] !== pattern[i]){
-			// change match to false
 			matched = false;
 		}
 	}
@@ -106,7 +106,7 @@ var compareArrays = function (){
 		createPattern();
 		round++;
 		roundNumber.innerHTML = "Round: " + round;
-		var timerId = window.setTimeout(animatePatternArray, 1000);
+		window.setTimeout(animatePatternArray, 1000);
 	} else {
 		console.log('LOSE');
 		instructions.classList.add('hidden');
@@ -134,6 +134,7 @@ var resetRoundCounter = function(){
 };
 
 var startGame = function(event){
+	clearPattern();
 	changeParagraphContent();
 	resetRoundCounter();
 	round++;
