@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Exo);
 
 body {
-	background: url('1488305.jpg');
+	background: url('1488305.jpg') no-repeat center center fixed;
 	background-position: fixed;
  	background-size: cover;
   	background-repeat: no-repeat;
@@ -13,7 +13,15 @@ body {
 /*	margin: 0 auto;*/
 	position: center;
 	text-align: center;
-	display: inline-block;
+	float: left;
+	width: 405px;
+	height: 450px;
+}
+
+.gameSide {
+	position: center;
+	text-align: center;
+	float: right;
 	width: 405px;
 	height: 450px;
 }
@@ -24,6 +32,24 @@ h1 {
 	position: left;
 	padding: 30px;
 	font-style: bold;
+}
+
+h2 {
+	font-family: 'Exo', sans-serif;
+	font-size: 55px;
+	position: center;
+	text-align: center;
+	margin: 0 auto;
+	padding: 30px;
+	font-style: bold;
+	font-weight: 500;
+	background-color: gray;
+	border-color: white;
+	border-style: solid;
+	border-radius: 5px;
+	opacity: .8;
+	margin-right: 70px;
+	padding-top: 10px;
 }
 
 p {
@@ -37,7 +63,7 @@ p {
 }
 
 .hidden {
-	visibility: hidden;
+	display: none;
 }
 
 button {
@@ -61,7 +87,7 @@ button:hover {
 	float: right;
 	height: 350px;
 	width: 350px;
-	padding-top: 200px;
+	padding-top: 50px;
 	padding-right: 50px;
 }
 
