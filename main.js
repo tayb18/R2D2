@@ -21,11 +21,7 @@ var startButton = document.querySelector('.start');
 var instructions = document.querySelector('.instructions');
 var loseAlert = document.querySelector('.loseAlert');
 
-var colors = [white, blue, grey, black];
 var pattern = [];
-
-var glowTimerOn = window.setTimeout(addGlow, 1000);
-var glowTimerOff = window.setTimeout(removeGlow, 2000);
 
 var userResponse = [];
 
@@ -52,9 +48,28 @@ var removeGlow = function (square){
 
 //clickFlashColor applies the addGlow and removeGlow functions to the square clicked on by the user
 var clickFlashColor = function (event){
+	// put user's click into response array
+	if (event.target === white) {
+		userResponse.push(white);
+		console.log(userResponse);
+	} else if (event.target === blue) {
+		userResponse.push(blue);
+		console.log(userResponse);
+	} else if (event.target === grey){
+		userResponse.push(grey);
+		console.log(userResponse);
+	} else if (event.target === black){
+		userResponse.push(black);
+		console.log(userResponse);
+	}
+	console.log(userResponse);
+
 	var square = event.target;
 	addGlow(square);
 	window.setTimeout(removeGlow, 750, square);
+
+	// now that the user's response has been recorded, let's compare!!!
+	compareArrays();
 };
 
 //rTwoFlashColor will be called within the animatePatternArray function, adding and removing the glow functions to the pattern array when it is the computers turn
@@ -63,16 +78,9 @@ var rTwoFlashColor = function (square) {
 	window.setTimeout(removeGlow, 750, square);
 };
 
-//????? CAN I ADD THESE TO THE END OF THE DOCUMENT?
-//these make the different buttons respond to a click
-white.addEventListener('click', clickFlashColor);
-blue.addEventListener('click', clickFlashColor);
-grey.addEventListener('click', clickFlashColor);
-black.addEventListener('click', clickFlashColor);
-
 //????? THIS ISN'T WORKING. SYNTAX MUST BE INCORRECT
 //this adds one to the round number after each round. It gets called in the startGame function
-// var roundCounter = function (pattern){
+// var roundCounter = function (){
 // 	for (createPattern) {
 // 		round = pattern.length;
 // 	}
@@ -95,49 +103,61 @@ var createPattern = function (event){
 
 //this will cycle through the patterns array and flash each item in order for half a second
 var animatePatternArray = function (){
-	window.setTimeout(function() {
-		var i = 0;
-		var square;
-		for (i = 0; i < pattern.length; i++){
-			square = pattern[i];
-			rTwoFlashColor(square);
+
+	for (var i = 0, len = pattern.length; i < len; i++){
+
+		// Passing in the index of the pattern array that we're currently using so that we have a reference to it when setAnimationDelay is called. SCOPE MAN. Otherwise i is whatever the final value of i in the loop was forever :(
+		var setAnimationDelay = function (rememberIndex) {
+			window.setTimeout(function() {
+				console.log(rememberIndex);
+				var square = pattern[rememberIndex];
+				rTwoFlashColor(square);
+			}, rememberIndex * 1000);
 		};
-	}, 500);
+		setAnimationDelay(i);
+	}
 };
 
-//??? THIS ISN'T WORKING YET
-//this should track the user response by pushing the color they clicked into a new array each round
-var getUserResponse = function (clicks){
-	//(track user clicks here and push into a new array)
-	if (event.target.classList === white){
-		userResponse.push(white);
-		console.log(userResponse);
-	} else if (event.target.classList === blue){
-		userResponse.push(blue);
-		console.log(userResponse);
-	} else if (event.target.classList === grey){
-		userResponse.push(grey);
-		console.log(userResponse);
-	} else if (event.target.classList === black){
-		userResponse.push(black);
-		console.log(userResponse);
-	};
-	console.log(userResponse);
-};
 
 //this array compares userResponse and pattern arrays. If the same, it will run createPattern and animate pattern array to continue the game. Otherwise it will show the lose alert and clear the pattern array for the next round.
+//if userResponse is correct, it will clear userResponse array for the next round
+//if userResponse in incorrect, it will clear both the pattern array and the userResponse array for the next game.
 var compareArrays = function (){
+	// we need to check and see if the arrays are the same length
+	// Guard 
+	if (pattern.length !== userResponse.length) {
+		return;
+	}
 	//compares userResponse array to pattern array
-	if (userResponse === pattern){
+	// if (userResponse === pattern){
+	// If the person's really good at Simon, how do we keep going??
+	//loops and stuff!
+	// loop to go through array and check them all
+	// assume EVERYONE'S A WINNER <3
+	var matched = true;
+	// go through the array and check if this is actually the case
+	for (var i = 0; i < pattern.length; i++) {
+		// checking
+		if(userResponse[i] !== pattern[i]){
+			// change match to false
+			matched = false;
+		}
+	}
+	if (matched){
+		console.log('MATCHED');
 		clearUserResponse();
 		createPattern();
-		animatePatternArray();
+		// Animate after a second if you win stuff!!!
+		var timerId = window.setTimeout(animatePatternArray, 1000);
+		// don't want this to happen immediately
+		// animatePatternArray();
 	} else {
+		console.log('LOSE');
 		instructions.classList.add('hidden');
 		loseAlert.classList.remove('hidden');
 		clearPattern();
 		clearUserResponse();
-	};
+	}
 };
 
 //this will empty the userResponse array. Should be called within the compareArrays function within the continueGame array in the if and the else statements to clear the userResponse array after each round. 
@@ -148,7 +168,16 @@ var clearUserResponse = function (){
 //this will empty the pattern array when called. Should be called within an if/else in the function compareArrays which determines whether the player passes a round or not within the continueGame function. If the player does not pass the round and the game is over, this function should be called to clear the pattern array.
 var clearPattern = function (){
 	pattern = [];
-}
+};
+
+var changeParagraphContent = function(){
+	instructions.classList.remove('hidden');
+	loseAlert.classList.add('hidden');
+};
+
+var resetRoundCounter = function(){
+	round = 0;
+};
 
 //?????????? SHOULD THE CONTINUE GAME FUNCTION BE CALLED WITHIN THE STARTGAME FUNCTION OR SEPERATELY?
 // startGame function should get this party started
@@ -156,23 +185,21 @@ var clearPattern = function (){
 // it will then call the getUserResponse function to track the squares the user is clicking
 var startGame = function(event){
 	//clicking startButton will run the startGame function.
+	changeParagraphContent();
+	resetRoundCounter();
 	createPattern();
 	animatePatternArray();
-	getUserResponse();
 };
-
-// continueGame function will  call the compareArrays function to compare the pattern array and the userResponse array. This function says that if userResponse is the same as patterns, it will re-run createPattern and continue on to the next round
-//This function will clear the userResponse array at the end of the round so that it is ready for the following round
-var continueGame = function(){
-	compareArrays();
-	userResponse = [];
-	console.log(userResponse);
-}
-
-
 
 //this makes the start button respond to a click
 startButton.addEventListener('click', startGame);
+
+//????? CAN I ADD THESE TO THE END OF THE DOCUMENT?
+//these make the different buttons respond to a click
+white.addEventListener('click', clickFlashColor);
+blue.addEventListener('click', clickFlashColor);
+grey.addEventListener('click', clickFlashColor);
+black.addEventListener('click', clickFlashColor);
 
 
  
