@@ -26,13 +26,14 @@ var pattern = [];
 var userResponse = [];
 
 var round = 0;
+var roundNumber = document.querySelector('#roundNumber');
 
 //these variables refer to the four different r2 sound bites 
-// var soundOne = newAudio('');
-// var soundTwo = newAudio('');
-// var soundThree = newAudio('');
-// var soundFour = newAudio('');
-// sound.play();
+var soundOne = new Audio('./R2D2-beeps/R2D2-beep1.mp3');
+var soundTwo = new Audio('./R2D2-beeps/R2D2-beep2.wav');
+var soundThree = new Audio('./R2D2-beeps/R2D2-beep3.mp3');
+var soundFour = new Audio('./R2D2-beeps/R2D2-beep4.mp3');
+
 
 
 
@@ -51,15 +52,19 @@ var clickFlashColor = function (event){
 	// put user's click into response array
 	if (event.target === white) {
 		userResponse.push(white);
+		soundOne.play();
 		console.log(userResponse);
 	} else if (event.target === blue) {
 		userResponse.push(blue);
+		soundTwo.play();
 		console.log(userResponse);
 	} else if (event.target === grey){
 		userResponse.push(grey);
+		soundThree.play();
 		console.log(userResponse);
 	} else if (event.target === black){
 		userResponse.push(black);
+		soundFour.play();
 		console.log(userResponse);
 	}
 	console.log(userResponse);
@@ -77,14 +82,6 @@ var rTwoFlashColor = function (square) {
 	addGlow(square);
 	window.setTimeout(removeGlow, 750, square);
 };
-
-//????? THIS ISN'T WORKING. SYNTAX MUST BE INCORRECT
-//this adds one to the round number after each round. It gets called in the startGame function
-// var roundCounter = function (){
-// 	for (createPattern) {
-// 		round = pattern.length;
-// 	}
-// };
 
 //createPattern function should create the random array of colors that the game will continue to loop through until the player loses. It will push randomly selected colors into the pattern array when called 
 var createPattern = function (event){
@@ -146,9 +143,12 @@ var compareArrays = function (){
 	if (matched){
 		console.log('MATCHED');
 		clearUserResponse();
+		
 		createPattern();
+		round++;
+		roundNumber.innerHTML = "Round: " + round;
 		// Animate after a second if you win stuff!!!
-		var timerId = window.setTimeout(animatePatternArray, 1000);
+		window.setTimeout(animatePatternArray, 1000);
 		// don't want this to happen immediately
 		// animatePatternArray();
 	} else {
@@ -187,6 +187,8 @@ var startGame = function(event){
 	//clicking startButton will run the startGame function.
 	changeParagraphContent();
 	resetRoundCounter();
+	round++;
+	roundNumber.innerHTML = "Round: " + round;
 	createPattern();
 	animatePatternArray();
 };
