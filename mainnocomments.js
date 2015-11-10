@@ -90,30 +90,27 @@ var animatePatternArray = function (){
 };
 
 var compareArrays = function (){
-	if (pattern.length !== userResponse.length) {
-		return;
-	}
-	var matched = true;
-	for (var i = 0; i < pattern.length; i++) {
+	// if (pattern.length !== userResponse.length) {
+	// 	return;
+	// }
+	for (var i = 0; i < userResponse.length; i++) {
 		if(userResponse[i] !== pattern[i]){
-			matched = false;
+			console.log('LOSE');
+			instructions.classList.add('hidden');
+			loseAlert.classList.remove('hidden');
+			clearPattern();
+			clearUserResponse();
+			return;
 		}
 	}
-	if (matched){
+	if (userResponse.length === pattern.length){
 		console.log('MATCHED');
-		clearUserResponse();
-		
+		clearUserResponse();		
 		createPattern();
 		round++;
 		roundNumber.innerHTML = "Round: " + round;
 		window.setTimeout(animatePatternArray, 1000);
-	} else {
-		console.log('LOSE');
-		instructions.classList.add('hidden');
-		loseAlert.classList.remove('hidden');
-		clearPattern();
-		clearUserResponse();
-	}
+	} 
 };
 
 var clearUserResponse = function (){

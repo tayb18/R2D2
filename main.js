@@ -121,40 +121,25 @@ var animatePatternArray = function (){
 //this array compares userResponse and pattern arrays. If the same, it will run createPattern and animate pattern array to continue the game. Otherwise it will show the lose alert and clear the pattern array for the next round.
 //if userResponse is correct, it will clear userResponse array for the next round
 //if userResponse is incorrect, it will clear both the pattern array and the userResponse array for the next game.
-var compareArrays = function (){ 
-	if (pattern.length !== userResponse.length) {
-		return;
-	}
-	//compares userResponse array to pattern array
-	//loop to go through array and check all the elements in the two arrays
-	//start by assuming EVERYONE'S A WINNER <3 so var matched = true
-	var matched = true;
-	// go through the array and check if this is actually the case
-	for (var i = 0; i < pattern.length; i++) {
-		// checking
+var compareArrays = function (){
+	for (var i = 0; i < userResponse.length; i++) {
 		if(userResponse[i] !== pattern[i]){
-			// if the user response array isn't the same as the pattern array than it is not matched, so matched get set equal to false
-			matched = false;
+			console.log(JSON.stringify(userResponse[i].id) + "|" + JSON.stringify(pattern[i].id));
+			console.log('LOSE');
+			instructions.classList.add('hidden');
+			loseAlert.classList.remove('hidden');
+			clearPattern();
+			clearUserResponse();
+			return;
 		}
 	}
-	//if after comparing, it is decided that the two arrays are a match, we will call the function clearUserResponse, clearing the array for the next round
-	//then the create pattern array will add a new element to the pattern array, the round # will increase by one and then calling animatePatternArray function, cycling through adding and removing glow from the pattern array.
-	if (matched){
+	if (userResponse.length === pattern.length){
 		console.log('MATCHED');
 		clearUserResponse();
 		createPattern();
-		// Animate after a second if you win stuff!!!
-		//Then add one to the round count and change the html h2 element to represent the increase
-		window.setTimeout(animatePatternArray, 1000);
 		round++;
 		roundNumber.innerHTML = "Round: " + round;
-		//if it's not a match change the <p> text to the LOSE message, and clear both pattern and userResponse arrays to prepare for the next game
-	} else {
-		console.log('LOSE');
-		instructions.classList.add('hidden');
-		loseAlert.classList.remove('hidden');
-		clearPattern();
-		clearUserResponse();
+		window.setTimeout(animatePatternArray, 1000);
 	}
 };
 
@@ -205,13 +190,3 @@ white.addEventListener('click', clickFlashColor);
 blue.addEventListener('click', clickFlashColor);
 grey.addEventListener('click', clickFlashColor);
 black.addEventListener('click', clickFlashColor);
-
-
- 
-
-
-
-
-
-
-
